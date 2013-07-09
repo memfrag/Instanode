@@ -63,7 +63,9 @@ function writeNotFoundStatus(request, response) {
 function writeJSON(request, response, output) {	
 	response.writeHead(200, {
 		'Content-Type': 'application/json',
-		'CacheControl': 'no-cache',
+		'Cache-Control': 'no-cache',
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Headers': 'Content-Type',
 		'Content-Length': output.length
 	});
 					
