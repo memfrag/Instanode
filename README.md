@@ -5,7 +5,7 @@ Start the server from the command prompt by changing to the Instanode directory 
 
 	node app.js
 
-Insert your Instagram client ID in instagram.js in the instagramClientId variable.
+Insert your Instagram client ID in a file named instagram.txt in the root folder of the repository.
 
 Enter the URL http://127.0.0.1:13337/instagram/stockholm to get some JSON stuff that you will have to figure out what to do with.
 
