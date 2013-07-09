@@ -13,6 +13,8 @@ function getImagesByLocation(latitude, longitude, distance, completionCallback, 
 		+ '&distance=' + distance,
 		function(res) {
 		// FIXME: We should really check the res.statusCode here...
+		
+		
 		var data = new Buffer("", "utf8");
 		
 		res.on('data', function (moreData) {
@@ -41,7 +43,7 @@ function periodicallyGetImagesByLocation(latitude, longitude, distance, imagesUp
 	})
 	
 	setInterval(function () {
-		getImagesFromStockholm(imagesUpdatedCallback, function (error) {
+		getImagesByLocation(latitude, longitude, distance, imagesUpdatedCallback, function (error) {
 			console.log("Error: " + error);
 		})
 	}, 60000);
