@@ -13,8 +13,10 @@ function getImagesByLocation(latitude, longitude, distance, completionCallback, 
 		+ '&distance=' + distance,
 		function(res) {
 		// FIXME: We should really check the res.statusCode here...
-		
-		
+		if (res.statusCode) {
+			errorCallback("Unable to get images, HTTP status code " + res.statusCode);
+			return;
+		}		
 		var data = new Buffer("", "utf8");
 		
 		res.on('data', function (moreData) {
@@ -29,7 +31,7 @@ function getImagesByLocation(latitude, longitude, distance, completionCallback, 
 		});
 
 	}).on('error', function(e) {
-		errorCallback();
+		errorCallback(e);
 	});	
 }
 
@@ -39,12 +41,12 @@ function periodicallyGetImagesByLocation(latitude, longitude, distance, imagesUp
 	console.log("*** Periodically getting images from Stockholm every 60 seconds.");
 	
 	getImagesByLocation(latitude, longitude, distance, imagesUpdatedCallback, function (error) {
-		console.log("Error: " + error);
+		console.log("*** Error: " + error);
 	})
 	
 	setInterval(function () {
 		getImagesByLocation(latitude, longitude, distance, imagesUpdatedCallback, function (error) {
-			console.log("Error: " + error);
+			console.log("*** Error: " + error);
 		})
 	}, 60000);
 }
