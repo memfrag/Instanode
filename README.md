@@ -11,5 +11,5 @@ Enter the URL http://127.0.0.1:13337/instagram/stockholm to get some JSON stuff 
 
 Static content goes in the static folder. The static/index.html file can be reached at:
 
-	http://127.0.0.1/index.html
+	http://127.0.0.1:13337/index.html
 
